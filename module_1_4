@@ -1,0 +1,7 @@
+my_string = input('Напишите свой любимый цвет: ')
+print('Ваш любимый цвет', my_string)
+print('Ваш любимый цвет', my_string.upper())
+print('Ваш любимый цвет', my_string.lower())
+print('Ваш любимый цвет'.replace(' ', ''), my_string)
+print(my_string[0])
+print(my_string[-1])
