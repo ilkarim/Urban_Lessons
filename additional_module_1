@@ -1,0 +1,34 @@
+#Задание "Средний балл":
+grades = [[5, 3, 3, 5, 4], [2, 2, 2, 3], [4, 5, 5, 2], [4, 4, 3], [5, 5, 5, 4, 5]]
+students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
+students = sorted(students) #Возвращает новый отсортированный список из элементов, мы его не проходили, ознакомился в интернете
+average_score = sum(grades[0]) / len(grades[0])
+average_score1 = sum(grades[1]) / len(grades[1])
+average_score2 = sum(grades[2]) / len(grades[2])
+average_score3 = sum(grades[3]) / len(grades[3])
+average_score4 = sum(grades[4]) / len(grades[4])
+student_dictionary = dict({students[0]:average_score,
+                           students[1]:average_score1,
+                           students[2]:average_score2,
+                           students[3]:average_score3,
+                           students[4]:average_score4})
+print(student_dictionary)
+
+#хотелось бы сделать так, чтобы можно было добавлять и удалять студентов, чтобы при этом конструкция не рушилась,
+#а это так, из уроков решил сделать.
+name = input('Введите имя студента: ')
+if name == 'Aaron':
+    average_score = sum(grades[0]) / len(grades[0])
+elif name == 'Bilbo':
+    average_score = sum(grades[1]) / len(grades[1])
+elif name == 'Johnny':
+    average_score = sum(grades[2]) / len(grades[2])
+elif name == 'Khendrik':
+    average_score = sum(grades[3]) / len(grades[3])
+elif name == 'Steve':
+    average_score = sum(grades[4]) / len(grades[4])
+else:
+    print('Такого студента нет')
+print('Средний балл:', name, 'составляет:', average_score)
+
+#конструкция не надежная с моими знаниями получилась, но надеюсь в будущем смогу делать более сложные
