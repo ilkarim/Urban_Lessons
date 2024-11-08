@@ -1,0 +1,6 @@
+immutable_var = 0, 1, 'Текст', True
+print('immutable tuple: ', immutable_var)
+#immutable_var[0] = 2 - кортеж не изменяемый тип, кортеж не поддерживает обращение по элементам.
+mutable_list = ['Белый', 'Синий', 555, 888, False]
+mutable_list[0] = 'Оранжевый' #в отличии от картежа, тип лист принимает изменение по элементам.
+print('mutable list: ', mutable_list)
