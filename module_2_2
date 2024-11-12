@@ -10,6 +10,7 @@ elif account == 2:
 else:
     print(0)
 
+
 #2-й вариант
 print('Задача "Все ли равны?"')
 first = int(input('Введите первое число: '))
@@ -21,3 +22,16 @@ elif first == second or first == third or second == third:
     print(2)
 else:
     print(0)
+
+
+#3-й вариант (который больше нравится)
+first = int(input('Введите первое число: '))
+second = int(input('Введите второе число: '))
+third = int(input('Введите третье число: '))
+account = len({first, second, third})
+if account == 1:
+    print('Все %s числа равны между собой' %(2+account))
+elif account == 2:
+    print('Только %s числа равны между собой' %account )
+else:
+    print('Все числа уникальны')
