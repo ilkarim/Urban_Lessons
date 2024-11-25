@@ -11,10 +11,11 @@ def test_num(n):
                 key.append(formation_2)
                 key_pair.append(key)
 
-
     return key_pair
 
+
 print(test_num(int(input('Введите число: '))))
+
 
 # Вариант 1
 def test_num(n):
@@ -24,7 +25,7 @@ def test_num(n):
             if n % (formation_1 + formation_2) == 0:
                 key_pair += ' ' + str(formation_1)
                 key_pair += '+' + str(formation_2)
-
     return key_pair
+
 
 print(test_num(int(input('Введите число: '))))
