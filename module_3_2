@@ -1,3 +1,5 @@
+''' Задача "Рассылка писем" '''
+
 def send_email(message, recipient, *, sender="university.help@gmail.com"):
     if '@' not in recipient or '@' not in sender:
         return f'Неверно указан mail, возможно забыли указать "@" '
