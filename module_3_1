@@ -1,0 +1,31 @@
+''' Пространство имён '''
+
+calls = 0
+
+
+def count_calls():  # подсчитывающая вызовы остальных функций
+    global calls
+    calls += 1
+
+
+def string_info(text):  # принимает аргумент - строку и
+    count_calls()
+    up_t = text.upper()
+    low_t = text.lower()
+    return len(text), up_t, low_t  # возвращает кортеж из: длины строки, строку в верхнем и нижнем регистре.
+
+
+def is_contains(args, check_list):  # принимает два аргумента: строку и список,
+    count_calls()
+    check = False  # False - если отсутствует. Регистром строки при проверке пренебречь: UrbaN ~ URBAN.
+    for i in check_list:
+        if args.lower() in i.lower():
+            check = True  # и возвращает True, если строка находится в этом списке,
+    return check
+
+
+print(string_info('Capybara'))
+print(string_info('Armageddon'))
+print(is_contains('Urban', ['ban', 'BaNaN', 'urBAN']))  # Urban ~ urBAN
+print(is_contains('cycle', ['recycling', 'cyclic']))  # No matches
+print(calls)
