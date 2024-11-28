@@ -1,0 +1,101 @@
+''' Домашнее задание по уроку "Распаковка позиционных параметров" '''
+
+def print_params(a=1, b=2, c=3):
+    print(a, b, c)
+
+print_params()
+print_params(b=55)
+print_params(c=[1, True, 'Urban'])
+
+values_list = [55, 66, 77]
+values_dict = {'a': 'Илья', 'b': 36, 'c': True}
+print_params(*values_list)
+print_params(*values_dict)
+
+values_list = ['Urban', True]
+print_params(5, *values_list)
+
+
+
+
+
+
+# Далее...
+# Полный разбор с моей стороны, как я понял верхнего решения для домашнего задания достаточно.
+values_list = [55, 66, 77]
+values_list_2 = ['Urban', True]
+
+def print_params(a=1, b='Строка', c=True):
+    print(type(a), type(b), type(c))
+    return f'{a}, {b}, {c}!\nПеречисляя аргументы (,) получаем картеж: {a, b, c}'
+
+# вызываю функцию без аргументов, получаю результаты параметров по умолчанию
+print(print_params(), '\n')
+
+# меняю позиционный аргумент по имени "b" новым значением int
+print(print_params(b=25), '\n')  # другими словами именованное обращение к позиционному аргументу в функции
+
+# меняю позиционный аргумент по имени "с" новым значением list
+print(print_params(c=[1, 2, 3]), '\n')
+print()
+
+# НЕВЕРНАЯ распаковка переменной, в этом случае позиционные аргументы в функции
+print(print_params(*values_list_2, 42), '\n') # принимают данные первыми, а после аргумент 42
+# (если в функции будет ключевой аргумент, будет ошибка)
+
+# правильная последовательность распаковки.
+print(print_params(10.5, *values_list_2), '\n')
+
+print(print_params(*values_list), '\n')  #
+
+values_dict = {'Имя': 'Илья', 'Возраст': 36, 'Студент Urban': True}
+print(print_params(*values_dict), '\n')
+
+values_dict_2 = {'Имя': 'Илья', 'Возраст': 36}
+print(print_params(*values_dict_2), '\n')
+
+# для корректной распаковки словаря имена ключей должны совпадать
+values_dict = {'a': 'Илья', 'b': 36, 'c': False}
+print(print_params(**values_dict), '\n')
+
+# а если не достает количество параметров, то 3 параметр будет взят из функции заданный по умолчанию
+values_dict_2 = {'a': 'Илья', 'b': 36}
+print(print_params(**values_dict_2), '\n')
+
+
+def print_params_2(*args):
+    print(type(args))
+    return f'Принимаем ключи в виде картежа {args}!'
+
+values_dict_3 = {'Имя': 'Илья', 'Возраст': 36, 'Студент Urban': True}
+print(print_params_2(*values_dict_3), '\n')
+
+
+
+def print_params_3(**kwargs):
+    print(type(kwargs))
+    return f'Принимаем словарь целиком {kwargs}!'
+
+values_dict_3 = {'Имя': 'Илья', 'Возраст': 36, 'Студент Urban': True}
+print(print_params_3(**values_dict_3), '\n')
+
+
+def print_params_4(a=3, *args, **kwargs):
+    print(type(a))
+    print(type(args))
+    print(type(kwargs))
+    return f'На выходе:\n {a} \n {args} \n {kwargs}!'
+values_list_4 = [1, 2, 3, 4, 5]
+values_dict_4 = {'Имя': 'Илья', 'Возраст': 36, 'Студент Urban': True}
+print(print_params_4(1, *values_list_4, **values_dict_4), '\n')
+
+# или можно еще так  
+def print_params_5(*,a=3, args, **kwargs):
+    print(type(a))
+    print(type(args))
+    print(type(kwargs))
+    return f'На выходе:\n {a} \n {args} \n {kwargs}!'
+
+values_list_5 = [1, 2, 3, 4, 5]
+values_dict_5 = {'Имя': 'Илья', 'Возраст': 36, 'Студент Urban': True}
+print(print_params_5(a=555, args=values_list_5, **values_dict_5), '\n')
