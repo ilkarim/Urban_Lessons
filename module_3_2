@@ -20,3 +20,29 @@ print(send_email('Это сообщение для проверки связи',
 print(send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk'))
 print(send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com'))
 print(send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru'))
+
+
+# Добавлен 2 вариант решения, скорее даже правильный.
+# ознакомился с методом endswith() и внёс изменения, получилось это:
+
+def send_email(message, recipient, *, sender="university.help@gmail.com"):
+    if '@' not in recipient or '@' not in sender:
+        return f'Неверно указан mail, возможно забыли указать "@" '
+
+    valid_endings = ('.com', '.ru', '.net')
+    if not sender.endswith(valid_endings) or not recipient.endswith(valid_endings):
+        return f'Невозможно отправить письмо с адреса: {sender} на адрес: {recipient}'
+
+    if recipient == sender:
+            return f'Нельзя отправить письмо самому себе!'
+
+    if sender == 'university.help@gmail.com':
+        return message
+    else:
+        return f'НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса: {sender} на адрес: {recipient}'
+
+
+print(send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com'))
+print(send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk'))
+print(send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com'))
+print(send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru'))
