@@ -1,0 +1,43 @@
+''' Задача "Однокоренные" '''
+
+
+
+def single_root_words(root_word, *other_words):
+    same_words = []
+    root_low = root_word.lower()
+    for ow_str in other_words:
+        ow_str_low = ow_str.lower()
+        if ow_str_low in root_low or root_low in ow_str_low:
+            same_words.append(ow_str)
+
+
+    return same_words
+
+result1 = single_root_words('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
+result2 = single_root_words('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
+print(result1)
+print(result2)
+
+
+
+# использовал метод .count()
+
+def single_root_words_2(root_word, *other_words):
+    same_words = []
+    root_low = root_word.lower()
+    for ow_str in other_words:
+        ow_str_low = ow_str.lower()
+        if ow_str_low.count(root_low) != root_low.count(ow_str_low):
+            same_words.append(ow_str)
+
+
+    return same_words
+
+result_3 = single_root_words_2('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
+result_4 = single_root_words_2('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
+result_5 = single_root_words_2('Рука', 'ручник', 'рУкав', 'выручить', 'сподручный', 'ручной')
+result_6 = single_root_words_2('Лицо', 'лицевой', 'обличие', 'обЛицовка')
+print(result_3)
+print(result_4)
+print(result_5)
+print(result_6)
