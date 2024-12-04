@@ -1,0 +1,32 @@
+''' Задача "Рекурсивное умножение цифр" '''
+
+data_structure = [
+  [1, 2, 3],
+  {'a': 4, 'b': 5},
+  (6, {'cube': 7, 'drum': 8}),
+  "Hello",
+  ((), [{(2, 'Urban', ('Urban2', 35))}])
+]
+
+def calculate_structure_sum(objects):
+    if isinstance(objects, int):
+        return objects
+    elif isinstance(objects, str):
+        return len(objects)
+    elif isinstance(objects, (list, tuple, set)):
+        total = 0
+        for item in objects:
+            total += calculate_structure_sum(item)
+        return total
+    elif isinstance(objects, dict):
+        total = 0
+        for key, value in objects.items():
+            total += len(str(key))  #все ключи считаю строчными :(
+            total += calculate_structure_sum(value)
+        return total
+    else:
+        return 0
+
+
+result = calculate_structure_sum(data_structure)
+print(result)
