@@ -1,0 +1,20 @@
+text = ''
+
+
+def test_function():
+#   global text  # <-- Синтаксическая ошибка, nonlocal text
+    text = 'abracadabra'
+
+    def inner_function():
+        nonlocal text
+        text = "Я в области видимости функции test_function"
+
+# inner_function()  <-- Ошибка отступа
+    inner_function()
+#       inner_function()  <-- Ошибка рекурсии
+#           inner_function()  <-- Ошибка отступа
+
+    return text
+
+
+print(test_function())
