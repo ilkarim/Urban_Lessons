@@ -13,8 +13,8 @@ class House:
     def go_to(self, new_floor):
         for i in range(1, new_floor + 1):
             if new_floor > self.number_of_floors:
-                if new_floor == 10:
-                    print(f'{new_floor} этажа нет, это же "{self.name}", он высотой {self.number_of_floors} этажа!')
+                if new_floor == 10 and self.number_of_floors <= 4:
+                    print(f'{new_floor} этажа нет, это "{self.name}", он высотой {self.number_of_floors} этажа!')
                 print('Такого этажа не существует')
                 break
             else:
