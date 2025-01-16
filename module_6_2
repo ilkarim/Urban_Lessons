@@ -1,0 +1,62 @@
+""" Домашнее задание по теме "Доступ к свойствам родителя. Переопределение свойств" """
+from traceback import print_tb
+
+
+# Задача "Изменять нельзя получать"
+# Студент Каримов Илья
+
+class Vehicle:
+    __COLOR_VARIANTS = ['blue', 'red', 'green', 'black', 'white', 'yellow']
+    def __init__(self, owner, __model, __color, __engine_power):
+        self.owner = owner
+        self.__model = __model
+        self.__color = __color
+        self.__engine_power = __engine_power
+
+class Sedan(Vehicle):
+    __PASSENGERS_LIMIT = 5
+    def get_model(self):
+        return f'Модель: {self._Vehicle__model}'
+
+    def get_horsepower(self):
+        return f'Мощность двигателя: {self._Vehicle__engine_power} л.с.'
+
+    def get_color(self):
+        return f'Цвет: {self._Vehicle__color}'
+
+    def print_info(self):
+        print(f'Модель: {self._Vehicle__model}\n'
+              f'Мощность двигателя: {self._Vehicle__engine_power} л.с.\n'
+              f'Цвет: {self._Vehicle__color}\n'
+              f'Владелец: {self.owner}\n')
+
+    def set_color(self, new_color):
+        for color in Vehicle._Vehicle__COLOR_VARIANTS:
+            if new_color.lower() == color.lower():
+                self._Vehicle__color = new_color
+                return
+        print(f'Нельзя сменить цвет на {new_color}\n')
+
+    def __str__(self):
+        return f'Модель: {self._Vehicle__model}\n'\
+               f'Мощность двигателя: {self._Vehicle__engine_power} л.с.\n'\
+               f'Цвет: {self._Vehicle__color}\n'\
+               f'Владелец: {self.owner}\n'
+
+
+vehicle1 = Sedan('Fedos', 'Toyota Mark II', 'blue', 500)
+vehicle2 = Sedan('Илья', 'ВАЗ 2106', 'White', 75)
+
+# Изначальные свойства
+vehicle1.print_info()
+
+# Меняем свойства (в т.ч. вызывая методы)
+vehicle1.set_color('Pink')
+vehicle1.set_color('BLACK')
+vehicle1.owner = 'Vasyok'
+
+# Проверяем что поменялось
+vehicle1.print_info()
+
+# Магический метод перегрузки строкового представления объекта 
+print(vehicle2)
